@@ -1,10 +1,10 @@
-CREATE DATABASE bookstore;
+CREATE SCHEMA bookstore;
 
 use bookstore;
 
 /*  Category Model */
 CREATE TABLE category(
-	id INTEGER PRIMARY KEY,
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(20) UNIQUE NOT NULL,
     description TEXT
 );
@@ -34,6 +34,7 @@ CREATE TABLE book(
     selling_price double,
     category_id integer,
     minimum_quantity INTEGER,
+    current_quantity INTEGER,
     FOREIGN KEY(category_id) REFERENCES category(id) 
 				ON UPDATE CASCADE ON DELETE SET NULL,
     FOREIGN KEY(publisher_id) REFERENCES publisher(id) 
@@ -53,7 +54,7 @@ CREATE TABLE book_author(
 
 /* book_orders Model*/
 CREATE TABLE book_orders(
-	id INTEGER PRIMARY KEY,
+	id INTEGER PRIMARY KEY AUTO_INCREMENT,
     book_num INTEGER,
     quantity INTEGER,
     FOREIGN KEY(book_num) REFERENCES book(ISBN) 
@@ -70,7 +71,7 @@ CREATE TABLE user(
     email_address VARCHAR(30) UNIQUE NOT NULL,
     phone_number VARCHAR(15),
     shipping_address VARCHAR(30),
-    is_manager BOOLEAN NOT NULL
+    is_manager BOOLEAN NOT NULL default false
 );
 
  
@@ -78,6 +79,7 @@ CREATE TABLE user(
  CREATE TABLE shopping_cart_books(
 	book_num INTEGER NOT NULL,
     customer_user_name VARCHAR(15) NOT NULL,
+    num_copies INTEGER default 1 NOT NULL,
     PRIMARY KEY(book_num, customer_user_name),
     FOREIGN KEY(book_num) REFERENCES book(ISBN) 
 				ON UPDATE CASCADE ON DELETE CASCADE,
@@ -87,12 +89,28 @@ CREATE TABLE user(
  
  /* credit card model*/
  CREATE TABLE credit_card(
-	number INTEGER PRIMARY KEY,
+	number CHAR(16) PRIMARY KEY,
+    owner_name VARCHAR(30) NOT NULL,
+    CSV CHAR(3) NOT NULL,
     expiry_date DATE NOT NULL,
     customer_user_name VARCHAR(15) NOT NULL,
     FOREIGN KEY(customer_user_name) REFERENCES user(user_name) 
 				ON UPDATE CASCADE ON DELETE CASCADE
  );
+
+/* sales model */
+CREATE TABLE sales(
+    book_isbn INTEGER NOT NULL,
+    customer_user_name VARCHAR(15) NOT NULL,
+    sale_time DATETIME NOT NULL,
+    num_copies INTEGER default 1 NOT NULL,
+    sale_price INTEGER NOT NULL,
+	PRIMARY KEY(book_isbn, customer_user_name,sale_time),
+	FOREIGN KEY(book_isbn) REFERENCES book(ISBN) 
+				ON UPDATE CASCADE,
+	FOREIGN KEY(customer_user_name) REFERENCES user(user_name) 
+				ON UPDATE CASCADE
+);
 
 
 
