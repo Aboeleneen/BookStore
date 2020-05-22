@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.CustomerHomeController">
+   <children>
+      <Text fill="#f2f2f2" layoutX="247.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Page">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+      <Button layoutX="40.0" layoutY="166.0" mnemonicParsing="false" prefHeight="118.0" prefWidth="136.0" text="View Books">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button layoutX="442.0" layoutY="166.0" mnemonicParsing="false" prefHeight="118.0" prefWidth="136.0" text="Shopping Cart">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="240.0" layoutY="166.0" mnemonicParsing="false" prefHeight="118.0" prefWidth="136.0" text="Edit Profile">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="276.0" layoutY="361.0" mnemonicParsing="false" text="logout">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

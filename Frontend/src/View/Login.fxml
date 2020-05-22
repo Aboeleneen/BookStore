@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <children>
+      <AnchorPane prefHeight="462.0" prefWidth="315.0" style="-fx-background-color: brown;" />
+      <AnchorPane layoutX="315.0" prefHeight="462.0" prefWidth="315.0">
+         <children>
+            <Text layoutX="62.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font: Bold;" text="Online Book Store" textAlignment="CENTER" wrappingWidth="176.13671875">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Text>
+            <TextField layoutX="61.0" layoutY="177.0" prefHeight="25.0" prefWidth="183.0" />
+            <TextField layoutX="61.0" layoutY="237.0" prefHeight="25.0" prefWidth="183.0" />
+            <Label layoutX="57.0" layoutY="154.0" text="Username :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="61.0" layoutY="218.0" text="Password :">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="button" layoutX="124.0" layoutY="295.0" mnemonicParsing="false" onAction="#login" text="Login" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

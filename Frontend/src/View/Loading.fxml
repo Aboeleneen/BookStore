@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoadingController">
+   <children>
+      <Text fill="#f5f5f5" layoutX="165.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to our book store">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
+      <Button fx:id="manager" layoutX="84.0" layoutY="172.0" mnemonicParsing="false" onAction="#login_manager" prefHeight="123.0" prefWidth="163.0" text="Manager">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="customer" layoutX="341.0" layoutY="172.0" mnemonicParsing="false" onAction="#login_customer" prefHeight="123.0" prefWidth="163.0" text="Customer">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

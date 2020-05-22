@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.BooksController">
+   <children>
+      <AnchorPane id="AnchorPane" layoutY="62.0" prefHeight="388.0" prefWidth="630.0" style="-fx-background-color: white;">
+         <children>
+            <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
+            <Button layoutX="21.0" layoutY="88.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
+            <Button layoutX="21.0" layoutY="161.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
+            <Button layoutX="21.0" layoutY="236.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
+            <Button layoutX="21.0" layoutY="312.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
+            <HBox layoutX="150.0" layoutY="17.0" prefHeight="355.0" prefWidth="466.0" style="-fx-background-color: green;" />
+         </children>
+      </AnchorPane>
+      <Text fill="#f8f8f8" layoutX="244.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our Books" wrappingWidth="117.11865234375">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
