@@ -10,11 +10,12 @@ public class Main {
 //		user.setUserName("sharshar2");
 //		user.setEmail("mahlasdjfioashdiov.com");
 		try {
-			user.addToshoppingCart(user.getBooksByCategory("science").get(0));
+//			user.addToshoppingCart(user.getBooksByCategory("science").get(0));
 			System.out.println(user.searchForBooks("ti").size());
-			System.out.println(user.getTotalCartPrice());
+			System.out.println(user.buyShoppingCart());
 //			user.addCreditCard("1234237893754567", "sdlf", "253", "2008-07-04");
-			user.Logout();
+			
+//			user.Logout();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

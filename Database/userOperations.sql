@@ -226,9 +226,60 @@ END$$
 DELIMITER ;
 
 
+
+/*
+* check if the user has credit card
+*/
+USE `bookstore`;
+DROP function IF EXISTS `hasCreditCard`;
+
+DELIMITER $$
+USE `bookstore`$$
+CREATE FUNCTION hasCreditCard (userName varchar(15), password varchar(20))
+RETURNS BOOLEAN
+BEGIN
+	IF ( SELECT login(userName, password) from user where user_name = userName ) = TRUE THEN
+		IF(userName in (select customer_user_name from credit_card)) THEN
+			RETURN TRUE;
+        END IF;
+    END IF;
+	RETURN 1FALSE;
+END$$
+
+DELIMITER ;
+
+
 /*
 * customer purchase
 */
+USE `bookstore`;
+DROP procedure IF EXISTS `buyBook`;
+
+DELIMITER $$
+USE `bookstore`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `buyBook`(userName varchar(15), password varchar(20),
+							bookNumber INTEGER, book_price double)
+BEGIN
+	DECLARE num_copies INTEGER;
+	IF ( SELECT login(userName, password) from user where user_name = userName ) = TRUE THEN
+		IF(bookNumber in (SELECT ISBN from book)) THEN
+
+			SET num_copies = (
+            select num_copies from shopping_cart_books 
+            where customer_user_name = userName and book_num = bookNumber
+            );
+			insert into sales values (bookNumber,userName,now(),
+									  num_copies,book_price);
+            update book set current_quantity = current_quantity - num_copies where isbn = bookNumber;
+            DELETE FROM shopping_cart_books where customer_user_name = userName;
+        END IF;
+    END IF;
+END$$
+
+DELIMITER ;
+
+
+
 
 
 

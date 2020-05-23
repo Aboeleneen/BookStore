@@ -21,8 +21,8 @@ public abstract class User {
 	protected boolean isManager;
 //	private ArrayList<Book> shoppingCart;
 	private boolean Updated;
-	
-	private  String DATABASE_URL = "jdbc:mysql://localhost:3306/bookstore";
+
+	private String DATABASE_URL = "jdbc:mysql://localhost:3306/bookstore";
 	private String DATABASE_USER_NAME = "root";
 	private String DATABASE_PASSWORD = "20211998";
 
@@ -74,12 +74,13 @@ public abstract class User {
 				+ "\")";
 		return executeQueryBooks(query);
 	}
-	
-	public ArrayList<Book> searchForBooks(String searchTerm) throws SQLException{
+
+	public ArrayList<Book> searchForBooks(String searchTerm) throws SQLException {
 		String query = "call searchForbooks(\"" + this.userName + "\",\"" + this.password + "\",\"" + searchTerm
 				+ "\")";
 		return executeQueryBooks(query);
 	}
+
 	// shopping cart operations
 	public void addToshoppingCart(Book book) throws SQLException {
 		try {
@@ -96,20 +97,20 @@ public abstract class User {
 		String query = "call viewCartItems(\"" + this.userName + "\",\"" + this.password + "\")";
 		return executeQueryBooks(query);
 	}
-	
+
 	public void removeBookFromShoppingCart(int book_isbn) throws SQLException {
-		String query = "call removeItemFromCart(\"" + this.userName + "\",\"" + this.password +"\"," + book_isbn +")";
+		String query = "call removeItemFromCart(\"" + this.userName + "\",\"" + this.password + "\"," + book_isbn + ")";
 		this.executeQuery(query);
 	}
-	
-	public double getTotalCartPrice() throws SQLException{
+
+	public double getTotalCartPrice() throws SQLException {
 		String query = "call viewCartPrice(\"" + this.userName + "\",\"" + this.password + "\")";
 		double price = 0.0;
 		try {
 			Connection con = DriverManager.getConnection(DATABASE_URL, DATABASE_USER_NAME, DATABASE_PASSWORD);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
+
 			if (rs.next()) {
 				price = rs.getDouble(1);
 			}
@@ -120,15 +121,14 @@ public abstract class User {
 		return price;
 	}
 
-	
-	public double getBookPriceInCart(int book_isbn) throws SQLException{
-		String query = "call viewBookCartPrice(\"" + this.userName + "\",\"" + this.password +"\"," + book_isbn + ")";
+	public double getBookPriceInCart(int book_isbn) throws SQLException {
+		String query = "call viewBookCartPrice(\"" + this.userName + "\",\"" + this.password + "\"," + book_isbn + ")";
 		double price = 0.0;
 		try {
 			Connection con = DriverManager.getConnection(DATABASE_URL, DATABASE_USER_NAME, DATABASE_PASSWORD);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
+
 			if (rs.next()) {
 				price = rs.getDouble(1);
 			}
@@ -138,19 +138,49 @@ public abstract class User {
 		}
 		return price;
 	}
-	
-	public void addCreditCard(String credit_num, String ownerName, String CSV,String expiry_date) throws SQLException {
+
+	public void addCreditCard(String credit_num, String ownerName, String CSV, String expiry_date) throws SQLException {
 		String query = "call addCreditCard(\"" + this.userName + "\",\"" + this.password + "\",\"" + credit_num
 				+ "\",\"" + ownerName + "\",\"" + CSV + "\",\"" + expiry_date + "\")";
 		this.executeQuery(query);
 	}
-	
+
+	public boolean hasCreditCard() throws SQLException {
+		String query = "SELECT hasCreditCard(\"" + this.userName + "\",\"" + this.password
+				+ "\") FROM credit_card where customer_user_name=\"" + this.userName + "\"";
+		boolean status = false;
+		try {
+			Connection con = DriverManager.getConnection(DATABASE_URL, DATABASE_USER_NAME, DATABASE_PASSWORD);
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+
+			if (rs.next()) {
+				status = rs.getBoolean(1);
+			}
+			con.close();
+		} catch (Exception e) {
+			throw new SQLException();
+		}
+		return status;
+	}
+
+	public String buyShoppingCart() throws SQLException {
+		if (this.hasCreditCard()) {
+			ArrayList<Book> books = this.viewShoppingCart();
+			for (Book book : books) {
+				this.executeQuery("call buyBook(\"" + this.userName + "\",\"" + this.password + "\"," + book.getISBN()
+						+ "," + book.getSellingPrice() + ")");
+			}
+			return "success";
+		} else
+			return "Credit card isn't available";
+	}
+
 	public void Logout() throws SQLException {
-		String query = "call Logout(\"" + this.userName + "\",\"" + this.password +"\")";
+		String query = "call Logout(\"" + this.userName + "\",\"" + this.password + "\")";
 		this.executeQuery(query);
 	}
-	
-	
+
 	// helper methods
 	private void executeQuery(String query) throws SQLException {
 		System.out.println(query);
@@ -160,10 +190,11 @@ public abstract class User {
 			ResultSet rs = stmt.executeQuery(query);
 			con.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new SQLException();
 		}
 	}
-	
+
 	private ArrayList<Book> executeQueryBooks(String query) throws SQLException {
 		ArrayList<Book> books = new ArrayList<Book>();
 		System.out.println(query);
@@ -171,7 +202,7 @@ public abstract class User {
 			Connection con = DriverManager.getConnection(DATABASE_URL, DATABASE_USER_NAME, DATABASE_PASSWORD);
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			
+
 			while (rs.next()) {
 				books.add(new Book(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getDouble(5),
 						rs.getInt(6), rs.getInt(8), rs.getInt(7)));
@@ -182,10 +213,9 @@ public abstract class User {
 		}
 		return books;
 	}
-	
-	
+
 	// getters and setters
-	
+
 	public String getUserName() {
 		return userName;
 	}
