@@ -31,7 +31,7 @@ public class LoginController extends MainController implements Initializable {
     @FXML private Text error_field;
     
     private boolean is_customer ;
-    private final String customer_path = "/View/CustomerHome.fxml" ;
+    private final String customer_path = "/View/ManagerHome.fxml" ;
     private final String return_path = "/View/Loading.fxml" ;
     private final String signup_path = "/View/SignUp.fxml" ;
     @Override
