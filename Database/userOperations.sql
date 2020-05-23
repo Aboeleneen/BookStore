@@ -94,11 +94,11 @@ DROP procedure IF EXISTS `addBookToShoppingCart`;
 
 DELIMITER $$
 USE `bookstore`$$
-CREATE PROCEDURE addBookToShoppingCart (user_name varchar(15), password varchar(20),bookNumber INTEGER)
+CREATE PROCEDURE addBookToShoppingCart (userName varchar(15), password varchar(20),bookNumber INTEGER)
 BEGIN
 	IF (SELECT login(userName, password) from user where user_name = userName) = TRUE THEN
 		IF bookNumber in (select ISBN from book) THEN
-			INSERT INTO shopping_cart_books (book_num ,customer_user_name) VALUES (bookNumber, user_name);
+			INSERT INTO shopping_cart_books (book_num ,customer_user_name) VALUES (bookNumber, userName);
 		END IF;
 	END IF;
 END$$
@@ -197,8 +197,7 @@ BEGIN
 				SELECT book_num FROM shopping_cart_books 
                 WHERE customer_user_name = userName
             ) s 
-            ON s.book_num = b.ISBN 
-            GROUP BY b.ISBN;
+            ON s.book_num = b.ISBN ;
 	END IF;
 END$$
 

@@ -25,11 +25,11 @@ DROP function IF EXISTS `login`;
 
 DELIMITER $$
 USE `bookstore`$$
-CREATE FUNCTION login (userName varchar(15), password varchar(20))
+CREATE FUNCTION login (userName varchar(15), user_password varchar(20))
 RETURNS boolean
 BEGIN
 	IF userName in (select user_name from user) THEN
-		IF password = (select password from user where user_name = userName) THEN
+		IF user_password in (select password from user where user_name = userName) THEN
 			RETURN TRUE;
 		ELSE 
 			RETURN FALSE;
