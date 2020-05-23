@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagerHomeController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.ManagerHomeController">
+   <children>
+      <Text fill="WHITE" layoutX="233.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Page">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
+      <Button fx:id="book_button" layoutX="48.0" layoutY="118.0" mnemonicParsing="false" onAction="#view_books" prefHeight="102.0" prefWidth="119.0" style="-fx-background-color: white;" text="View Books ">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="edit_button" layoutX="233.0" layoutY="118.0" mnemonicParsing="false" onAction="#edit_profile" prefHeight="102.0" prefWidth="119.0" style="-fx-background-color: white;" text="Edit Profile">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="cart_button" layoutX="422.0" layoutY="118.0" mnemonicParsing="false" onAction="#show_cart" prefHeight="102.0" prefWidth="119.0" style="-fx-background-color: white;" text="Shopping Cart">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="new_button" layoutX="48.0" layoutY="263.0" mnemonicParsing="false" onAction="#add_book" prefHeight="102.0" prefWidth="119.0" style="-fx-background-color: white;" text="Add Book">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="place_button" layoutX="233.0" layoutY="263.0" mnemonicParsing="false" onAction="#place_orders" prefHeight="102.0" prefWidth="119.0" style="-fx-background-color: white;" text="Place Order">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirm_button" layoutX="422.0" layoutY="263.0" mnemonicParsing="false" onAction="#confirm_orders" prefHeight="102.0" prefWidth="119.0" style="-fx-background-color: white;" text="Confirm Order">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="logout_button" layoutX="532.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: white;" text="Logout">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="promote_button" layoutX="221.0" layoutY="396.0" mnemonicParsing="false" onAction="#promote_customers" style="-fx-background-color: white;" text="Promote Customers ">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>
