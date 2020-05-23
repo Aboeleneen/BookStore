@@ -61,7 +61,7 @@ BEGIN
 	IF ( SELECT isManager(userName, password) from user where user_name = userName ) = TRUE THEN
 		IF(book_ISBN in (SELECT ISBN from book))THEN
 		   UPDATE book SET title =  new_title,
-							publisher_id =new_publisher_id,publication_year = new_publication_year,
+							publisher_id = new_publisher_id,publication_year = new_publication_year,
                             selling_price = new_selling_price,category_id =new_category_id,
                             minimum_quantity =new_minimum_quantity , current_quantity =new_quantity
 						WHERE isbn = book_ISBN;
@@ -169,15 +169,20 @@ DROP procedure IF EXISTS `totalBooksSales`;
 
 DELIMITER $$
 USE `bookstore`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `totalBooksSales`(userName varchar(15), password varchar(20))
+CREATE PROCEDURE `totalBooksSales`(userName varchar(15), password varchar(20))
 BEGIN
 	IF ( SELECT isManager(userName, password) from user where user_name = userName ) = TRUE THEN
-			SELECT book_isbn, sum(num_copies) number_sales 
+			SELECT b.title, s.number_sales from book b
+            inner join 
+           ( 
+				SELECT book_isbn, sum(num_copies) number_sales 
                 FROM sales 
-                WHERE sale_time 
-						BETWEEN DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-01 00:00:00')
-						AND DATE_FORMAT(LAST_DAY(NOW() - INTERVAL 1 MONTH), '%Y-%m-%d 23:59:59')
-				GROUP BY book_isbn;
+                WHERE sale_time -- 
+						-- BETWEEN now()
+-- 						AND DATE_FORMAT(NOW() - INTERVAL 1 MONTH, '%Y-%m-%d 00:00:00')-- 
+				GROUP BY book_isbn
+			) s  
+			on s.book_isbn = b.isbn;
 	END IF;
 END$$
 
@@ -197,9 +202,9 @@ BEGIN
 	IF ( SELECT isManager(userName, password) from user where user_name = userName ) = TRUE THEN
 		SELECT customer_user_name, sum(sale_price) purchace_amount
         FROM sales 
-        WHERE sale_time 
-						BETWEEN DATE_FORMAT(NOW() - INTERVAL 3 MONTH, '%Y-%m-01 00:00:00')
-						AND DATE_FORMAT(LAST_DAY(NOW() - INTERVAL 3 MONTH), '%Y-%m-%d 23:59:59')
+        -- WHERE sale_time 
+-- 						BETWEEN DATE_FORMAT(NOW() - INTERVAL 3 MONTH, '%Y-%m-01 00:00:00')
+-- 						AND DATE_FORMAT(LAST_DAY(NOW() - INTERVAL 3 MONTH), '%Y-%m-%d 23:59:59')
 		GROUP BY customer_user_name 
         order by purchace_amount
 		limit 5;
@@ -222,9 +227,9 @@ BEGIN
 	IF ( SELECT isManager(userName, password) from user where user_name = userName ) = TRUE THEN
 			SELECT book_isbn, sum(num_copies) number_sales 
 			FROM sales 
-			WHERE sale_time 
-						BETWEEN DATE_FORMAT(NOW() - INTERVAL 3 MONTH, '%Y-%m-01 00:00:00')
-						AND DATE_FORMAT(LAST_DAY(NOW() - INTERVAL 3 MONTH), '%Y-%m-%d 23:59:59')
+			-- WHERE sale_time 
+-- 						BETWEEN DATE_FORMAT(NOW() - INTERVAL 3 MONTH, '%Y-%m-01 00:00:00')
+-- 						AND DATE_FORMAT(LAST_DAY(NOW() - INTERVAL 3 MONTH), '%Y-%m-%d 23:59:59')
 			GROUP BY book_isbn 
             ORDER BY number_sales 
             LIMIT 10;
