@@ -197,7 +197,7 @@ DROP procedure IF EXISTS `topPurchaceCustomers`;
 
 DELIMITER $$
 USE `bookstore`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `topPurchaceCustomers`(userName varchar(15), password varchar(20))
+CREATE PROCEDURE `topPurchaceCustomers`(userName varchar(15), password varchar(20))
 BEGIN
 	IF ( SELECT isManager(userName, password) from user where user_name = userName ) = TRUE THEN
 		SELECT customer_user_name, sum(sale_price) purchace_amount

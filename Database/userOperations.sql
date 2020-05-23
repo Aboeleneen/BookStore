@@ -37,7 +37,7 @@ DROP procedure IF EXISTS `getBooksByCategory`;
 
 DELIMITER $$
 USE `bookstore`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getBooksByCategory`(userName varchar(15), password varchar(20), cat_name VARCHAR(20))
+CREATE  PROCEDURE `getBooksByCategory`(userName varchar(15), password varchar(20), cat_name VARCHAR(20))
 BEGIN
 	IF ( SELECT login(userName, password) from user where user_name = userName ) = TRUE THEN
 		 select *from book where category_id = (select id from category where name=cat_name);
@@ -72,7 +72,7 @@ DROP procedure IF EXISTS `searchForbooks`;
 
 DELIMITER $$
 USE `bookstore`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `searchForbooks`(userName varchar(15), password varchar(20), search_term varchar(30))
+CREATE  PROCEDURE `searchForbooks`(userName varchar(15), password varchar(20), search_term varchar(30))
 BEGIN
 	IF ( SELECT login(userName, password) from user where user_name = userName ) = TRUE THEN
 		 select *from book where title like concat('%' ,search_term ,'%');
