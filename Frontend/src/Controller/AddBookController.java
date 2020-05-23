@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -36,6 +37,8 @@ public class AddBookController extends MainController implements Initializable {
 	@FXML private TextField min_quantity ;
 	@FXML private Button add_button;
 	
+	private final String path = "/View/ManagerHome.fxml" ;
+	
 	private Manager current_manager ;
     private boolean is_customer;
     
@@ -54,6 +57,7 @@ public class AddBookController extends MainController implements Initializable {
     								category.getValue(),
     								quantity.getText(),
     								min_quantity.getText());
+    	change_scene(event , path);
     }
 	public void initData(Manager current_user, boolean is_customer) {
 		// TODO Auto-generated method stub
@@ -72,6 +76,12 @@ public class AddBookController extends MainController implements Initializable {
         this.category.getItems().add("Religion");
         this.category.getItems().add("History");
         this.category.getItems().add("Geography");
+	}
+	
+	@Override
+	public void init_controller(FXMLLoader loader) {
+		ManagerHomeController controller = loader.getController();
+		controller.initData(current_manager, is_customer);
 	}
 	
     
