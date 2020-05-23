@@ -104,7 +104,7 @@ CREATE TABLE sales(
     customer_user_name VARCHAR(15) NOT NULL,
     sale_time DATETIME NOT NULL,
     num_copies INTEGER default 1 NOT NULL,
-    sale_price INTEGER NOT NULL,
+    sale_price double NOT NULL,
 	PRIMARY KEY(book_isbn, customer_user_name,sale_time),
 	FOREIGN KEY(book_isbn) REFERENCES book(ISBN) 
 				ON UPDATE CASCADE,

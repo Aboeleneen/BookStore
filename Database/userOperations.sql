@@ -212,7 +212,7 @@ DROP procedure IF EXISTS `addCreditCard`;
 
 DELIMITER $$
 USE `bookstore`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `addCreditCard`(userName varchar(15), password varchar(20),
+CREATE  PROCEDURE `addCreditCard`(userName varchar(15), password varchar(20),
 								credit_num CHAR(16),owner_name VARCHAR(30),
                                 CSV CHAR(3),expiry_date DATE)
 BEGIN
@@ -257,26 +257,28 @@ DROP procedure IF EXISTS `buyBook`;
 
 DELIMITER $$
 USE `bookstore`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `buyBook`(userName varchar(15), password varchar(20),
+CREATE PROCEDURE `buyBook`(userName varchar(15), password varchar(20),
 							bookNumber INTEGER, book_price double)
 BEGIN
-	DECLARE num_copies INTEGER;
+	DECLARE copies INTEGER;
 	IF ( SELECT login(userName, password) from user where user_name = userName ) = TRUE THEN
 		IF(bookNumber in (SELECT ISBN from book)) THEN
-
-			SET num_copies = (
-            select num_copies from shopping_cart_books 
-            where customer_user_name = userName and book_num = bookNumber
+			SET copies = (
+            select num_copies 
+            from shopping_cart_books 
+            where customer_user_name = userName and book_num = bookNumber limit 1
             );
 			insert into sales values (bookNumber,userName,now(),
-									  num_copies,book_price);
-            update book set current_quantity = current_quantity - num_copies where isbn = bookNumber;
+									  copies,book_price);
+            update book set current_quantity = current_quantity - copies where isbn = bookNumber;
             DELETE FROM shopping_cart_books where customer_user_name = userName;
         END IF;
     END IF;
 END$$
 
 DELIMITER ;
+
+
 
 
 
