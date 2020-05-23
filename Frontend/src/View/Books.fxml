@@ -31,9 +31,9 @@
                <font>
                   <Font name="System Bold" size="13.0" />
                </font></Button>
-            <HBox layoutX="150.0" layoutY="59.0" prefHeight="313.0" prefWidth="466.0" style="-fx-background-color: green;" />
             <TextField fx:id="search_bar" layoutX="211.0" layoutY="23.0" prefHeight="25.0" prefWidth="270.0" />
             <Button fx:id="search_button" layoutX="511.0" layoutY="23.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: brown;" text="Search" textFill="WHITE" />
+            <VBox fx:id="library" layoutX="143.0" layoutY="59.0" maxHeight="315.0" maxWidth="460.0" prefHeight="315.0" prefWidth="460.0" />
          </children>
       </AnchorPane>
       <Text fill="#f8f8f8" layoutX="244.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our Books" wrappingWidth="117.11865234375">

@@ -1,11 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddBookController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.AddBookController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;">
+               <children>
+                  <Text fill="#fcfcfc" layoutX="245.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Book">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane layoutX="18.0" layoutY="60.0" prefHeight="376.0" prefWidth="594.0" style="-fx-background-color: white;">
+                     <children>
+                        <TextField fx:id="ISBN" layoutX="156.0" layoutY="25.0" prefHeight="25.0" prefWidth="387.0" />
+                        <TextField fx:id="title" layoutX="156.0" layoutY="74.0" prefHeight="25.0" prefWidth="387.0" />
+                        <TextField fx:id="year" layoutX="156.0" layoutY="168.0" prefHeight="25.0" prefWidth="387.0" />
+                        <TextField fx:id="price" layoutX="156.0" layoutY="256.0" prefHeight="25.0" prefWidth="387.0" />
+                        <Label layoutX="36.0" layoutY="27.0" text="ISBN Number :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="36.0" layoutY="76.0" text="Book Title :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="170.0" text="Publication Year : ">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="publisher" layoutX="156.0" layoutY="117.0" prefHeight="25.0" prefWidth="190.0" />
+                        <Label layoutX="39.0" layoutY="119.0" text="Publisher :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="category" layoutX="156.0" layoutY="217.0" prefHeight="25.0" prefWidth="190.0" />
+                        <Label layoutX="44.0" layoutY="219.0" text="Category :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="42.0" layoutY="258.0" text="Selling Price :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="add_button" layoutX="455.0" layoutY="328.0" mnemonicParsing="false" onAction="#add" prefHeight="29.0" prefWidth="106.0" style="-fx-background-color: brown;" text="Add" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Button>
+                        <Label layoutX="41.0" layoutY="298.0" text="Quantity :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="quantity" layoutX="153.0" layoutY="296.0" prefHeight="25.0" prefWidth="128.0" />
+                        <TextField layoutX="393.0" layoutY="296.0" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="min_quantity" layoutX="287.0" layoutY="298.0" text="Min Quantity :">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

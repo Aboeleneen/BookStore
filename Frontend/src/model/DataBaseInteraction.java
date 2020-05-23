@@ -8,15 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DataBaseInteraction {
-	public static String DATABASE_URL = "jdbc:mysql://localhost:3306/bookstore";
+	public static String DATABASE_URL = "jdbc:mysql://localhost@mahmoud98:3306/bookstore";
 	public static String DATABASE_USER_NAME = "root";
-	public static String DATABASE_PASSWORD = "20211998";
+	public static String DATABASE_PASSWORD = "";
 	
 	public static void executeQuery(String query) throws SQLException {
 		System.out.println(query);
 		
 		try {
-			Connection con = DriverManager.getConnection(DATABASE_URL, DATABASE_USER_NAME, DATABASE_PASSWORD);
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "root", "mahmoud98");
 			Statement stmt = con.createStatement();
 			 stmt.executeQuery(query);
 			con.close();

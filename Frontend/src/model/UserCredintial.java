@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class UserCredintial {
 	private String DATABASE_URL = "jdbc:mysql://localhost:3306/bookstore";
 	private String DATABASE_USER_NAME = "root";
-	private String DATABASE_PASSWORD = "20211998";
+	private String DATABASE_PASSWORD = "mahmoud98";
 
 	public User signUp(String userName, String password, String firstName, String lastName, String email,
 			String phoneNumber, String shippingAddress) {
