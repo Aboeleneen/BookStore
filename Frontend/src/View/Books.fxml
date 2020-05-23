@@ -7,17 +7,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.BooksController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BooksController">
    <children>
       <AnchorPane id="AnchorPane" layoutY="62.0" prefHeight="388.0" prefWidth="630.0" style="-fx-background-color: white;">
          <children>
-            <Button layoutX="21.0" layoutY="14.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
-            <Button layoutX="21.0" layoutY="88.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
-            <Button layoutX="21.0" layoutY="161.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
-            <Button layoutX="21.0" layoutY="236.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
-            <Button layoutX="21.0" layoutY="312.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="97.0" text="Button" />
-            <HBox layoutX="150.0" layoutY="17.0" prefHeight="355.0" prefWidth="466.0" style="-fx-background-color: green;" />
+            <Button fx:id="science_button" layoutX="21.0" layoutY="14.0" mnemonicParsing="false" onAction="#get_science_book" prefHeight="66.0" prefWidth="97.0" style="-fx-background-color: brown;" text="Science" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="art_button" layoutX="21.0" layoutY="88.0" mnemonicParsing="false" onAction="#get_art_book" prefHeight="66.0" prefWidth="97.0" style="-fx-background-color: brown;" text="Art" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+            <Button fx:id="religion_button" layoutX="21.0" layoutY="161.0" mnemonicParsing="false" onAction="#get_religion_book" prefHeight="66.0" prefWidth="97.0" style="-fx-background-color: brown;" text="Religion" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Button fx:id="history_button" layoutX="21.0" layoutY="236.0" mnemonicParsing="false" onAction="#get_history_book" prefHeight="66.0" prefWidth="97.0" style="-fx-background-color: brown;" text="History" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button fx:id="geography_button" layoutX="21.0" layoutY="312.0" mnemonicParsing="false" onAction="#get_geography_book" prefHeight="66.0" prefWidth="97.0" style="-fx-background-color: brown;" text="Geography" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <HBox layoutX="150.0" layoutY="59.0" prefHeight="313.0" prefWidth="466.0" style="-fx-background-color: green;" />
+            <TextField fx:id="search_bar" layoutX="211.0" layoutY="23.0" prefHeight="25.0" prefWidth="270.0" />
+            <Button fx:id="search_button" layoutX="511.0" layoutY="23.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: brown;" text="Search" textFill="WHITE" />
          </children>
       </AnchorPane>
       <Text fill="#f8f8f8" layoutX="244.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our Books" wrappingWidth="117.11865234375">
@@ -25,5 +41,10 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Text>
+      <Button fx:id="return_button" layoutX="33.0" layoutY="16.0" mnemonicParsing="false" onAction="#return_home" style="-fx-background-color: white;" text="Return">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

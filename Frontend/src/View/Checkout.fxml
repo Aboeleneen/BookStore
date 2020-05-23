@@ -7,10 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.CheckoutController">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CheckoutController">
    <children>
-      <Text fill="WHITE" layoutX="235.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Checkout" wrappingWidth="139.13671875">
+      <Text fill="WHITE" layoutX="258.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Checkout" wrappingWidth="139.13671875">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
@@ -44,6 +43,19 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="289.0" layoutY="333.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="77.0" text="Pay" />
+      <Button fx:id="pay_button" layoutX="289.0" layoutY="333.0" mnemonicParsing="false" onAction="#pay" prefHeight="25.0" prefWidth="77.0" style="-fx-background-color: white;" text="Pay">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <Button fx:id="return_button" layoutX="28.0" layoutY="21.0" mnemonicParsing="false" onAction="#return_cart" style="-fx-background-color: white;" text="Return">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Text fx:id="error_field" layoutX="248.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="183.13671875">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

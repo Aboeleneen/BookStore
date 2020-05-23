@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -7,6 +8,33 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.CartController">
-    
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="630.0" style="-fx-background-color: brown;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CartController">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="52.0" prefHeight="385.0" prefWidth="600.0" style="-fx-background-color: white;">
+         <children>
+            <VBox layoutX="15.0" layoutY="14.0" prefHeight="312.0" prefWidth="572.0" style="-fx-background-color: blue;" />
+            <TextField fx:id="price_field" layoutX="120.0" layoutY="339.0" prefHeight="25.0" prefWidth="95.0" />
+            <Label layoutX="30.0" layoutY="341.0" text="Totak Price :">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="checkout_button" layoutX="451.0" layoutY="339.0" mnemonicParsing="false" onAction="#checkout" style="-fx-background-color: brown;" text="checkout" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Button fx:id="return_button" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#return_home" style="-fx-background-color: white;" text="Return">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="251.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shopping Cart">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Text>
+   </children>
 </AnchorPane>
