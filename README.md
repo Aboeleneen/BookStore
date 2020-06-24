@@ -1,39 +1,39 @@
-# online-bookstore
-online store that has three types of users (ordinary user , manager , publisher).
+# Book Store System 
+  Design a relational database using MYSQL for a book store and implement a desktop application using Java to simulate it.
 
-# procedures
-### getBooksByPublisher
-take id of publisher as parameter and return the books that this publisher publish.
-### getBooksByCategory
-take id of Category as parameter and return the books that belongs to that category.
-### getBooksByAuthor
-take id of Author as parameter and return the books that belongs to that author.
-### getBookBytitle
-take title of book as parameter and return the book that has that title.
-### getBookByISBN
-take isbn of book as parameter and return the book that has that isbn.
-### confirm_order
-that function take an id of order and remove it from order table as it is confirmed by publisher.
-### new_book
-create new book for a known publisher.
-##### parameters 
-ISBN INTEGER 
-title VARCHAR(30)
-publisher_id INTEGER
-publication_year year
-selling_price double
-category_id integer
-minimum_quantity INTEGER
-quantity integer
+## Main requirements :
+  - Analyze, design and implement a database system to support the operations of a simplified online bookstore. 
+  - Create the necessary forms to perform these operations. The data and functional requirements of the system are as follows.
 
-### new_publisher
-create new publisher .
+## Code Structure :
+  - There are two main modules:
+     - Database Modul:
+        - Using Mysql DBMS to create the database.
+        - Creates the models of the system.
+        - Contains the procedures that provide interaction with the bookstore database.
+    - FrontEnd Modul:
+       - Follow the MVC pattern and contains three folders:
+            - View: represent the user interface of the system.
+            - Model: provides interaction with the Mysql Server.
+            - Controller: manages the data flow between the view and the model
 
-##### parameters
-id INTEGER 
-name VARCHAR(30)
-address VARCHAR(30)
-phone_number VARCHAR(15)
-
-### update_copies
-take the id of the book and quantity to be sold and update all the required tables.
+## Features :
+  - **Customer :**
+    - signUp
+    - login
+    - Logout
+    - Edit User Info
+    - get Books By Category
+    - search For books
+    - add Book to shoppingCart
+    - view cart items
+    - remove item from cart
+  - **Manager :**
+    - addNewBook
+    - modifyBook
+    - Place orders for books
+    - confirm orders for books
+    - Promote registered customers to have managers credentials.
+    - View The total sales for books in the previous month
+    - View The top 5 customers who purchase the most purchase amount in descending order for the last three months.
+    - View The top 10 selling books for the last three months.
